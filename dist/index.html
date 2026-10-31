@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0d0c">
+  <meta name="description" content="Laboratorio visual para estudiar estructura de mercado y documentar setups.">
+  <title>Market Structure Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Market Structure Lab">
+      <span class="brand-mark">MS</span>
+      <span><strong>Market Structure</strong><small>LAB / 01</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="save-state" id="saveState"><i></i> Guardado local</span>
+      <button class="button ghost" id="importButton">Importar</button>
+      <button class="button primary" id="exportButton">Exportar análisis</button>
+      <input id="importInput" type="file" accept="application/json" hidden>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">PLAYBOOK / ANÁLISIS ACTIVO</p>
+        <h1>Leé el mercado.<br><em>Documentá la decisión.</em></h1>
+      </div>
+      <p class="intro-copy">Un espacio privado para marcar estructura, registrar hipótesis y convertir cada gráfico en evidencia para tu proceso.</p>
+    </section>
+
+    <section class="workspace">
+      <aside class="panel context-panel">
+        <div class="panel-heading"><span>01</span><h2>Contexto</h2></div>
+        <label>Instrumento<input id="instrument" placeholder="BTCUSDT" maxlength="24"></label>
+        <div class="field-row">
+          <label>Temporalidad<select id="timeframe"><option>15m</option><option selected>1H</option><option>4H</option><option>1D</option></select></label>
+          <label>Sesión<select id="session"><option>Londres</option><option selected>Nueva York</option><option>Asia</option></select></label>
+        </div>
+        <fieldset>
+          <legend>Sesgo</legend>
+          <div class="segmented">
+            <button data-bias="Alcista">↑ Alcista</button>
+            <button data-bias="Neutral" class="active">— Neutral</button>
+            <button data-bias="Bajista">↓ Bajista</button>
+          </div>
+        </fieldset>
+        <label>Hipótesis<textarea id="hypothesis" rows="5" placeholder="¿Qué esperás que haga el precio y por qué?"></textarea></label>
+        <label>Confianza <output id="confidenceOutput">50%</output><input id="confidence" type="range" min="0" max="100" value="50"></label>
+        <div class="privacy-note"><span>◇</span><p><strong>Privado por diseño</strong>Todo queda guardado en este navegador.</p></div>
+      </aside>
+
+      <section class="chart-column">
+        <div class="panel chart-panel">
+          <div class="chart-toolbar">
+            <div>
+              <p class="eyebrow">02 / LIENZO</p>
+              <h2 id="chartTitle">Gráfico sin cargar</h2>
+            </div>
+            <div class="tools" aria-label="Herramientas de anotación">
+              <button class="tool active" data-tool="select" title="Seleccionar">↖</button>
+              <button class="tool" data-tool="bos">BOS</button>
+              <button class="tool" data-tool="choch">CH</button>
+              <button class="tool" data-tool="liquidity">LQ</button>
+              <button class="tool" data-tool="poi">POI</button>
+              <button class="tool" data-tool="note">T</button>
+              <button class="tool danger" id="clearAnnotations" title="Borrar anotaciones">×</button>
+            </div>
+          </div>
+          <div class="canvas-wrap" id="canvasWrap">
+            <img id="chartImage" alt="Gráfico cargado por el usuario">
+            <div id="annotations" aria-live="polite"></div>
+            <label class="upload-zone" id="uploadZone">
+              <input id="chartUpload" type="file" accept="image/*" hidden>
+              <span class="upload-icon">↥</span>
+              <strong>Soltá tu gráfico acá</strong>
+              <small>PNG, JPG o WEBP · También podés pegar una captura</small>
+              <span class="button primary">Elegir archivo</span>
+            </label>
+          </div>
+          <p class="canvas-hint" id="canvasHint">Elegí una herramienta y hacé clic sobre el gráfico para marcarla.</p>
+        </div>
+
+        <div class="panel checklist-panel">
+          <div class="panel-heading"><span>03</span><h2>Confirmaciones</h2><small id="checkProgress">0 / 5</small></div>
+          <div class="check-grid" id="checklist">
+            <label><input type="checkbox" value="HTF POI"><span>HTF POI</span></label>
+            <label><input type="checkbox" value="Barrida de liquidez"><span>Barrida de liquidez</span></label>
+            <label><input type="checkbox" value="CHOCH confirmado"><span>CHOCH confirmado</span></label>
+            <label><input type="checkbox" value="Desplazamiento"><span>Desplazamiento</span></label>
+            <label><input type="checkbox" value="R:R válido"><span>R:R válido</span></label>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel journal-panel">
+        <div class="panel-heading"><span>04</span><h2>Bitácora</h2></div>
+        <label>Nombre del setup<input id="setupName" placeholder="NY reversal"></label>
+        <label>Resultado<select id="result"><option value="Pendiente">Pendiente</option><option value="Ganadora">Ganadora</option><option value="Perdedora">Perdedora</option><option value="Break even">Break even</option><option value="Sin entrada">Sin entrada</option></select></label>
+        <label>Notas<textarea id="notes" rows="8" placeholder="Qué viste, qué ejecutaste y qué revisarías..."></textarea></label>
+        <div class="stats">
+          <div><strong id="annotationCount">0</strong><span>marcas</span></div>
+          <div><strong id="confirmationCount">0</strong><span>checks</span></div>
+        </div>
+        <button class="button outline full" id="newAnalysis">+ Nuevo análisis</button>
+      </aside>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
