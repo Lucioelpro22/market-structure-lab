@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="sprint.css">
   <link rel="stylesheet" href="analytics.css">
+  <link rel="stylesheet" href="community.css">
   <style>[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -18,6 +19,7 @@
       <span><strong>Market Structure</strong><small>LAB / 01</small></span>
     </a>
     <div class="top-actions">
+      <nav class="app-nav" aria-label="Navegación principal"><a href="#workspace">Diario</a><a href="#risk">Riesgo</a><a href="#analyticsPanel">Métricas</a><a href="#history">Historial</a></nav>
       <span class="save-state" id="saveState"><i></i> Guardado local</span>
       <button class="button ghost" id="importButton">Importar</button>
       <button class="button primary" id="exportButton">Exportar análisis</button>
@@ -34,7 +36,7 @@
       <p class="intro-copy">Un espacio privado para marcar estructura, registrar hipótesis y convertir cada gráfico en evidencia para tu proceso.</p>
     </section>
 
-    <section class="workspace">
+    <section class="workspace" id="workspace">
       <aside class="panel context-panel">
         <div class="panel-heading"><span>01</span><h2>Contexto</h2></div>
         <label>Instrumento<input id="instrument" placeholder="BTCUSDT" maxlength="24"></label>
@@ -130,8 +132,25 @@
       </aside>
     </section>
 
+    <section class="risk-panel" id="risk">
+      <div class="risk-intro"><p class="eyebrow">05 / RISK DESK</p><h2>Protegé el capital<br><em>antes de entrar.</em></h2><p>Calculá el tamaño de posición desde el riesgo permitido, no desde la expectativa.</p></div>
+      <div class="risk-calculator panel">
+        <div class="risk-fields">
+          <label>Capital de cuenta<input id="accountSize" type="number" min="0" step="any" placeholder="10000"></label>
+          <label>Riesgo por operación<input id="riskPercent" type="number" min="0.1" max="100" step="0.1" value="1"><span class="field-suffix">%</span></label>
+          <label>Límite diario<input id="dailyLimit" type="number" min="0.1" max="100" step="0.1" value="3"><span class="field-suffix">%</span></label>
+        </div>
+        <div class="risk-results">
+          <article><span>Capital arriesgado</span><strong id="riskAmount">—</strong></article>
+          <article><span>Tamaño de posición</span><strong id="positionSize">—</strong></article>
+          <article><span>Pérdida diaria máxima</span><strong id="dailyLoss">—</strong></article>
+        </div>
+        <p class="risk-message" id="riskMessage">Usa la entrada y el stop del plan de operación para calcular la posición.</p>
+      </div>
+    </section>
+
     <section class="analytics-panel" id="analyticsPanel">
-      <div class="analytics-head"><div><p class="eyebrow">05 / MÉTRICAS</p><h2>Tu proceso, en números</h2></div><p>Las estadísticas se calculan únicamente con los análisis guardados.</p></div>
+      <div class="analytics-head"><div><p class="eyebrow">06 / MÉTRICAS</p><h2>Tu proceso, en números</h2></div><p>Las estadísticas se calculan únicamente con los análisis guardados.</p></div>
       <div class="metric-grid">
         <article><span>Operaciones</span><strong id="metricTrades">0</strong><small id="metricClosed">0 cerradas</small></article>
         <article><span>Win rate</span><strong id="metricWinRate">—</strong><small>ganadoras / cerradas</small></article>
@@ -145,9 +164,9 @@
       </div>
     </section>
 
-    <section class="panel history-panel">
+    <section class="panel history-panel" id="history">
       <div class="history-head">
-        <div><p class="eyebrow">06 / ARCHIVO</p><h2>Historial de análisis</h2></div>
+        <div><p class="eyebrow">07 / ARCHIVO</p><h2>Historial de análisis</h2></div>
         <div class="history-filters">
           <input id="historySearch" type="search" placeholder="Buscar instrumento o setup…" aria-label="Buscar en historial">
           <select id="historyResult" aria-label="Filtrar por resultado"><option value="">Todos los resultados</option><option>Ganadora</option><option>Perdedora</option><option>Break even</option><option>Pendiente</option><option>Sin entrada</option></select>
@@ -157,6 +176,8 @@
       <div class="history-empty" id="historyEmpty"><span>◇</span><strong>Todavía no hay análisis archivados</strong><p>Completá tu plan y guardalo para construir evidencia sobre tu proceso.</p></div>
     </section>
   </main>
+
+  <footer><span>Market Structure Lab · Open source</span><p>Herramienta educativa. No constituye asesoramiento financiero.</p><a href="https://github.com" target="_blank" rel="noreferrer">GitHub ↗</a></footer>
 
   <div class="toast" id="toast" role="status"></div>
   <script src="app.js"></script>
