@@ -8,6 +8,7 @@
   <title>Market Structure Lab</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="sprint.css">
+  <link rel="stylesheet" href="analytics.css">
   <style>[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -112,6 +113,14 @@
         </div>
         <label>Resultado<select id="result"><option value="Pendiente">Pendiente</option><option value="Ganadora">Ganadora</option><option value="Perdedora">Perdedora</option><option value="Break even">Break even</option><option value="Sin entrada">Sin entrada</option></select></label>
         <label>Notas<textarea id="notes" rows="8" placeholder="Qué viste, qué ejecutaste y qué revisarías..."></textarea></label>
+        <div class="review-block">
+          <div class="subheading"><span>Revisión posterior</span></div>
+          <div class="review-grid">
+            <label>Resultado en R<input id="actualR" type="number" inputmode="decimal" step="0.1" placeholder="Ej. 2.5"></label>
+            <label>Ejecución<select id="execution"><option value="Sin evaluar">Sin evaluar</option><option value="Según plan">Según plan</option><option value="Parcial">Parcial</option><option value="Fuera del plan">Fuera del plan</option></select></label>
+          </div>
+          <label>Aprendizaje<textarea id="lesson" rows="3" placeholder="¿Qué repetirías o cambiarías?"></textarea></label>
+        </div>
         <div class="stats">
           <div><strong id="annotationCount">0</strong><span>marcas</span></div>
           <div><strong id="confirmationCount">0</strong><span>checks</span></div>
@@ -121,9 +130,24 @@
       </aside>
     </section>
 
+    <section class="analytics-panel" id="analyticsPanel">
+      <div class="analytics-head"><div><p class="eyebrow">05 / MÉTRICAS</p><h2>Tu proceso, en números</h2></div><p>Las estadísticas se calculan únicamente con los análisis guardados.</p></div>
+      <div class="metric-grid">
+        <article><span>Operaciones</span><strong id="metricTrades">0</strong><small id="metricClosed">0 cerradas</small></article>
+        <article><span>Win rate</span><strong id="metricWinRate">—</strong><small>ganadoras / cerradas</small></article>
+        <article><span>Promedio R</span><strong id="metricAvgR">—</strong><small>resultado realizado</small></article>
+        <article><span>Disciplina</span><strong id="metricDiscipline">—</strong><small>ejecutadas según plan</small></article>
+      </div>
+      <div class="analytics-grid">
+        <article class="analytics-card"><div class="card-title"><h3>Por sesión</h3><span>Volumen y acierto</span></div><div id="sessionStats" class="bar-list"></div></article>
+        <article class="analytics-card"><div class="card-title"><h3>Por setup</h3><span>Mejores patrones</span></div><div id="setupStats" class="setup-list"></div></article>
+        <article class="analytics-card insight-card"><div class="card-title"><h3>Lectura rápida</h3><span>Se actualiza sola</span></div><p id="insightText">Guardá algunas operaciones para descubrir patrones.</p></article>
+      </div>
+    </section>
+
     <section class="panel history-panel">
       <div class="history-head">
-        <div><p class="eyebrow">05 / ARCHIVO</p><h2>Historial de análisis</h2></div>
+        <div><p class="eyebrow">06 / ARCHIVO</p><h2>Historial de análisis</h2></div>
         <div class="history-filters">
           <input id="historySearch" type="search" placeholder="Buscar instrumento o setup…" aria-label="Buscar en historial">
           <select id="historyResult" aria-label="Filtrar por resultado"><option value="">Todos los resultados</option><option>Ganadora</option><option>Perdedora</option><option>Break even</option><option>Pendiente</option><option>Sin entrada</option></select>
