@@ -7,6 +7,8 @@
   <meta name="description" content="Laboratorio visual para estudiar estructura de mercado y documentar setups.">
   <title>Market Structure Lab</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sprint.css">
+  <style>[hidden]{display:none!important}</style>
 </head>
 <body>
   <header class="topbar">
@@ -98,14 +100,37 @@
       <aside class="panel journal-panel">
         <div class="panel-heading"><span>04</span><h2>Bitácora</h2></div>
         <label>Nombre del setup<input id="setupName" placeholder="NY reversal"></label>
+        <div class="trade-plan">
+          <div class="subheading"><span>Plan de operación</span><strong id="rrBadge">R:R —</strong></div>
+          <div class="price-grid">
+            <label>Entrada<input id="entry" type="number" inputmode="decimal" step="any" placeholder="0.00"></label>
+            <label>Stop<input id="stop" type="number" inputmode="decimal" step="any" placeholder="0.00"></label>
+            <label>Objetivo<input id="target" type="number" inputmode="decimal" step="any" placeholder="0.00"></label>
+          </div>
+          <div class="rr-visual"><span id="riskBar"></span><i></i><span id="rewardBar"></span></div>
+          <p id="rrHelp">Completá los tres precios para calcular el riesgo/beneficio.</p>
+        </div>
         <label>Resultado<select id="result"><option value="Pendiente">Pendiente</option><option value="Ganadora">Ganadora</option><option value="Perdedora">Perdedora</option><option value="Break even">Break even</option><option value="Sin entrada">Sin entrada</option></select></label>
         <label>Notas<textarea id="notes" rows="8" placeholder="Qué viste, qué ejecutaste y qué revisarías..."></textarea></label>
         <div class="stats">
           <div><strong id="annotationCount">0</strong><span>marcas</span></div>
           <div><strong id="confirmationCount">0</strong><span>checks</span></div>
         </div>
-        <button class="button outline full" id="newAnalysis">+ Nuevo análisis</button>
+        <button class="button primary full" id="saveAnalysis">Guardar en historial</button>
+        <button class="button outline full compact" id="newAnalysis">+ Nuevo análisis</button>
       </aside>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="history-head">
+        <div><p class="eyebrow">05 / ARCHIVO</p><h2>Historial de análisis</h2></div>
+        <div class="history-filters">
+          <input id="historySearch" type="search" placeholder="Buscar instrumento o setup…" aria-label="Buscar en historial">
+          <select id="historyResult" aria-label="Filtrar por resultado"><option value="">Todos los resultados</option><option>Ganadora</option><option>Perdedora</option><option>Break even</option><option>Pendiente</option><option>Sin entrada</option></select>
+        </div>
+      </div>
+      <div class="history-list" id="historyList"></div>
+      <div class="history-empty" id="historyEmpty"><span>◇</span><strong>Todavía no hay análisis archivados</strong><p>Completá tu plan y guardalo para construir evidencia sobre tu proceso.</p></div>
     </section>
   </main>
 

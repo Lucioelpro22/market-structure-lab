@@ -10,6 +10,8 @@ Laboratorio visual y local-first para documentar análisis de estructura de merc
 - Checklist de confirmaciones.
 - Guardado automático en `localStorage`.
 - Exportación e importación de análisis en JSON.
+- Historial con búsqueda, filtros, edición y duplicado.
+- Plan de entrada, stop y objetivo con cálculo automático de R:R.
 
 ## Uso local
 
