@@ -1,5 +1,9 @@
 # Market Structure Lab
 
+Diario visual, local-first y open source para estudiar estructura de mercado, planificar riesgo y revisar decisiones de trading.
+
+> Herramienta educativa. No constituye asesoramiento financiero ni ejecuta operaciones.
+
 Laboratorio visual y local-first para documentar análisis de estructura de mercado.
 
 ## Funciones
@@ -24,6 +28,23 @@ python -m http.server 4173 --directory dist
 ```
 
 Luego abrí `http://localhost:4173`.
+
+## Arquitectura
+
+La aplicación usa HTML, CSS y JavaScript sin dependencias ni proceso de compilación. Los análisis, imágenes y preferencias se guardan en `localStorage`; nada se transmite a un servidor.
+
+## Desarrollo
+
+```powershell
+node --check dist/app.js
+python -m http.server 4173 --directory dist
+```
+
+## Comunidad
+
+Las contribuciones son bienvenidas. Consultá [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) y [SECURITY.md](SECURITY.md).
+
+Licencia MIT.
 
 ## Privacidad
 
