@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="sprint.css">
   <link rel="stylesheet" href="analytics.css">
   <link rel="stylesheet" href="community.css">
+  <link rel="stylesheet" href="reports.css">
   <style>[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -70,6 +71,8 @@
               <button class="tool" data-tool="choch">CH</button>
               <button class="tool" data-tool="liquidity">LQ</button>
               <button class="tool" data-tool="poi">POI</button>
+              <button class="tool zone-tool supply" data-tool="supply">SUP</button>
+              <button class="tool zone-tool demand" data-tool="demand">DEM</button>
               <button class="tool" data-tool="note">T</button>
               <button class="tool danger" id="clearAnnotations" title="Borrar anotaciones">×</button>
             </div>
@@ -164,9 +167,18 @@
       </div>
     </section>
 
+    <section class="report-panel panel" id="reports">
+      <div class="report-copy"><p class="eyebrow">07 / WEEKLY REVIEW</p><h2>Convertí la semana<br>en aprendizaje.</h2><p>Resumen automático de los últimos siete días con resultados, disciplina, sesiones, setups y aprendizajes registrados.</p></div>
+      <div class="report-preview">
+        <div class="report-period"><span>Período</span><strong id="reportPeriod">—</strong></div>
+        <div class="report-mini-grid"><div><span>Operaciones</span><strong id="reportTrades">0</strong></div><div><span>Win rate</span><strong id="reportWinRate">—</strong></div><div><span>R neta</span><strong id="reportNetR">—</strong></div></div>
+        <div class="report-actions"><button class="button ghost" id="exportMarkdown">Descargar Markdown</button><button class="button primary" id="exportPdf">Imprimir / PDF</button></div>
+      </div>
+    </section>
+
     <section class="panel history-panel" id="history">
       <div class="history-head">
-        <div><p class="eyebrow">07 / ARCHIVO</p><h2>Historial de análisis</h2></div>
+        <div><p class="eyebrow">08 / ARCHIVO</p><h2>Historial de análisis</h2></div>
         <div class="history-filters">
           <input id="historySearch" type="search" placeholder="Buscar instrumento o setup…" aria-label="Buscar en historial">
           <select id="historyResult" aria-label="Filtrar por resultado"><option value="">Todos los resultados</option><option>Ganadora</option><option>Perdedora</option><option>Break even</option><option>Pendiente</option><option>Sin entrada</option></select>

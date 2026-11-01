@@ -18,6 +18,8 @@ Laboratorio visual y local-first para documentar análisis de estructura de merc
 - Plan de entrada, stop y objetivo con cálculo automático de R:R.
 - Revisión posterior con resultado en R, disciplina y aprendizaje.
 - Dashboard con win rate, R promedio, sesiones y setups destacados.
+- Zonas supply/demand dibujables, movibles y redimensionables.
+- Revisión semanal exportable a Markdown o mediante impresión/PDF.
 
 ## Uso local
 
