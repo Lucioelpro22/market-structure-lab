@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="community.css">
   <link rel="stylesheet" href="reports.css">
   <link rel="stylesheet" href="discipline.css">
+  <link rel="stylesheet" href="cloud.css">
   <style>[hidden]{display:none!important}.playbook-picker .button.ghost,.report-actions .button.ghost{display:inline-block}</style>
 </head>
 <body>
@@ -23,6 +24,7 @@
     <div class="top-actions">
       <nav class="app-nav" aria-label="Navegación principal"><a href="#workspace">Diario</a><a href="#risk">Riesgo</a><a href="#analyticsPanel">Métricas</a><a href="#history">Historial</a></nav>
       <span class="save-state" id="saveState"><i></i> Guardado local</span>
+      <button class="button ghost" id="accountButton">Sincronizar</button>
       <button class="button ghost" id="importButton">Importar</button>
       <button class="button primary" id="exportButton">Exportar análisis</button>
       <input id="importInput" type="file" accept="application/json" hidden>
@@ -203,6 +205,20 @@
   <footer><span>Market Structure Lab · Open source</span><p>Herramienta educativa. No constituye asesoramiento financiero.</p><a href="https://github.com/Lucioelpro22/market-structure-lab" target="_blank" rel="noreferrer">GitHub ↗</a></footer>
 
   <div class="toast" id="toast" role="status"></div>
+  <dialog class="auth-dialog" id="authDialog">
+    <form method="dialog" class="auth-card">
+      <button class="auth-close" value="cancel" aria-label="Cerrar">×</button>
+      <p class="eyebrow">NUBE PRIVADA</p>
+      <h2 id="authTitle">Guardá tu diario en todos tus dispositivos.</h2>
+      <p id="authCopy">Ingresá tu email y te enviaremos un enlace seguro. Tus datos siguen siendo privados y cada usuario solo puede ver los suyos.</p>
+      <label id="authEmailLabel">Email<input id="authEmail" type="email" autocomplete="email" placeholder="vos@ejemplo.com"></label>
+      <button type="button" class="button primary" id="authSubmit">Enviar enlace seguro</button>
+      <button type="button" class="button ghost auth-signout" id="authSignOut" hidden>Cerrar sesión</button>
+      <small id="authStatus">Podés seguir usando la app sin cuenta: el guardado local siempre permanece activo.</small>
+    </form>
+  </dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="cloud.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
