@@ -20,6 +20,9 @@ Laboratorio visual y local-first para documentar análisis de estructura de merc
 - Dashboard con win rate, R promedio, sesiones y setups destacados.
 - Zonas supply/demand dibujables, movibles y redimensionables.
 - Revisión semanal exportable a Markdown o mediante impresión/PDF.
+- Playbooks reutilizables con reglas y confirmaciones predefinidas.
+- Registro de errores de ejecución y análisis de frecuencia.
+- Calendario mensual con operaciones y resultado diario en R.
 
 ## Uso local
 
