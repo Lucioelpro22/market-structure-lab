@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="analytics.css">
   <link rel="stylesheet" href="community.css">
   <link rel="stylesheet" href="reports.css">
-  <style>[hidden]{display:none!important}</style>
+  <link rel="stylesheet" href="discipline.css">
+  <style>[hidden]{display:none!important}.playbook-picker .button.ghost,.report-actions .button.ghost{display:inline-block}</style>
 </head>
 <body>
   <header class="topbar">
@@ -105,6 +106,10 @@
 
       <aside class="panel journal-panel">
         <div class="panel-heading"><span>04</span><h2>Bitácora</h2></div>
+        <div class="playbook-picker">
+          <label>Playbook<select id="playbook"><option value="">Sin playbook</option><option value="ny-reversal">NY Reversal</option><option value="liquidity-sweep">Liquidity Sweep</option><option value="breakout-retest">Breakout & Retest</option><option value="trend-pullback">Trend Pullback</option></select></label>
+          <button class="button ghost" id="applyPlaybook">Aplicar reglas</button>
+        </div>
         <label>Nombre del setup<input id="setupName" placeholder="NY reversal"></label>
         <div class="trade-plan">
           <div class="subheading"><span>Plan de operación</span><strong id="rrBadge">R:R —</strong></div>
@@ -125,6 +130,7 @@
             <label>Ejecución<select id="execution"><option value="Sin evaluar">Sin evaluar</option><option value="Según plan">Según plan</option><option value="Parcial">Parcial</option><option value="Fuera del plan">Fuera del plan</option></select></label>
           </div>
           <label>Aprendizaje<textarea id="lesson" rows="3" placeholder="¿Qué repetirías o cambiarías?"></textarea></label>
+          <fieldset class="error-fieldset"><legend>Errores detectados</legend><div class="error-grid" id="errorChecklist"><label><input type="checkbox" value="FOMO"><span>FOMO</span></label><label><input type="checkbox" value="Entrada anticipada"><span>Entrada anticipada</span></label><label><input type="checkbox" value="Sobreoperación"><span>Sobreoperación</span></label><label><input type="checkbox" value="Moví el stop"><span>Moví el stop</span></label><label><input type="checkbox" value="Rompí límite diario"><span>Rompí límite diario</span></label><label><input type="checkbox" value="Fuera del plan"><span>Fuera del plan</span></label></div></fieldset>
         </div>
         <div class="stats">
           <div><strong id="annotationCount">0</strong><span>marcas</span></div>
@@ -176,9 +182,14 @@
       </div>
     </section>
 
+    <section class="calendar-panel panel" id="calendar">
+      <div class="calendar-head"><div><p class="eyebrow">08 / PERFORMANCE CALENDAR</p><h2>Consistencia diaria</h2></div><div class="month-controls"><button id="prevMonth" aria-label="Mes anterior">←</button><strong id="calendarMonth">—</strong><button id="nextMonth" aria-label="Mes siguiente">→</button></div></div>
+      <div class="calendar-layout"><div><div class="calendar-weekdays"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div><div class="calendar-grid" id="calendarGrid"></div></div><aside class="error-summary"><span class="eyebrow">DISCIPLINA</span><h3>Errores frecuentes</h3><div id="errorStats"></div><p id="errorInsight">Registrá errores en tus revisiones para encontrar patrones.</p></aside></div>
+    </section>
+
     <section class="panel history-panel" id="history">
       <div class="history-head">
-        <div><p class="eyebrow">08 / ARCHIVO</p><h2>Historial de análisis</h2></div>
+        <div><p class="eyebrow">09 / ARCHIVO</p><h2>Historial de análisis</h2></div>
         <div class="history-filters">
           <input id="historySearch" type="search" placeholder="Buscar instrumento o setup…" aria-label="Buscar en historial">
           <select id="historyResult" aria-label="Filtrar por resultado"><option value="">Todos los resultados</option><option>Ganadora</option><option>Perdedora</option><option>Break even</option><option>Pendiente</option><option>Sin entrada</option></select>
